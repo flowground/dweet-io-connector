@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "thing": {
+            "required": true,
+            "type": "string"
+        },
+        "lock": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

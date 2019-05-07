@@ -1,0 +1,243 @@
+{
+    "title": "dweet.io",
+    "description": "Dweet.io allows users to share data from mobile, tablets, and pcs, and them to other devices and accounts across social media platforms. Dweet.io provides an API to access the different functionality of the Dweet.io service. Users can make REST calls to read and create dweets, lock and unlock things, and perform other calls. The API returns JSON and JSONP.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/dweet.io/2.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://dweet.io/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "createAlertGET": {
+            "main": "./lib/actions/createAlertGET.js",
+            "title": "Create an alert for a thing. A thing must be locked before an alert can be set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createAlertGET.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_dweet_for__thing_": {
+            "main": "./lib/actions/post_dweet_for__thing_.js",
+            "title": "Create a dweet for a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_dweet_for__thing_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_dweet_quietly_for__thing_": {
+            "main": "./lib/actions/post_dweet_quietly_for__thing_.js",
+            "title": "Create a dweet for a thing.  This method differs from /dweet/for/{thing} only in that successful dweets result in an HTTP 204 response rather than the typical verbose response.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_dweet_quietly_for__thing_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAlert": {
+            "main": "./lib/actions/getAlert.js",
+            "title": "Get the alert attached to a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAlert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_get_dweets_for__thing_": {
+            "main": "./lib/actions/get_get_dweets_for__thing_.js",
+            "title": "Read the last 5 cached dweets for a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_get_dweets_for__thing_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getLatestDweet": {
+            "main": "./lib/actions/getLatestDweet.js",
+            "title": "Read the latest dweet for a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLatestDweet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getStoredAlerts": {
+            "main": "./lib/actions/getStoredAlerts.js",
+            "title": "Read all the saved alerts for a thing from long term storage.  You can query a maximum of 1 day per request and a granularly of 1 hour.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getStoredAlerts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_get_stored_dweets_for__thing_": {
+            "main": "./lib/actions/get_get_stored_dweets_for__thing_.js",
+            "title": "Read all the saved dweets for a thing from long term storage.  You can query a maximum of 1 day per request and a granularly of 1 hour.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_get_stored_dweets_for__thing_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "listenForDweets": {
+            "main": "./lib/actions/listenForDweets.js",
+            "title": "Listen for dweets from a thing.",
+            "description": "Sorry, this function uses HTTP chunked responses and cannot be tested here. Try something like: <pre>curl --raw https://dweet.io/listen/for/dweets/from/{thing}</pre>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/listenForDweets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "lockThing": {
+            "main": "./lib/actions/lockThing.js",
+            "title": "Reserve and lock a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/lockThing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeAlert": {
+            "main": "./lib/actions/removeAlert.js",
+            "title": "Remove an alert for a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeAlert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "removeLock": {
+            "main": "./lib/actions/removeLock.js",
+            "title": "Remove a lock from thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/removeLock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "unlockThing": {
+            "main": "./lib/actions/unlockThing.js",
+            "title": "Unlock a thing.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/unlockThing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

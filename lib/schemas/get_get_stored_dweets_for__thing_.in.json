@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "thing": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "required": true,
+            "type": "string"
+        },
+        "date": {
+            "required": true,
+            "type": "string"
+        },
+        "hour": {
+            "required": false,
+            "type": "string"
+        },
+        "responseType": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "who": {
+            "required": true,
+            "type": "string"
+        },
+        "thing": {
+            "required": true,
+            "type": "string"
+        },
+        "condition": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
